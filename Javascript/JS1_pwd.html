@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Password Generator</title>
+</head>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background: hsl(0, 0%, 94%);
+        
+    }
+    .container{
+        max-width: 600px;
+        margin: 0 auto; /* keep things centered */
+        padding: 20px;
+        background-color: hsl(0, 0%, 100%);
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1{
+        color: hsl(0, 0%, 20%);
+        font-size: 24px;
+
+    }
+
+    input[type="number"]{
+        width: 50px;
+    }
+    button{
+        background-color: hsl(211, 100%, 50%);
+        color: hsl(0, 0%, 100%);
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    button:hover{
+        background-color: hsl(211, 100%, 35%);
+    }
+    #passwordOutput{
+        font-size: 24px;
+        color: hsl(0, 0%, 20%);
+    }
+
+    @media (max-width: 480px){
+        .container{
+            margin-top: 10px;
+        }
+        h1{
+            font-size: 20px;
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <div>
+            <label for="length">Password Length:</label>
+            <input type="number" id="length" min="5" max="20" value="8">
+        </div>
+        <div>
+            <label><input type="radio" name="caseOption" id="mixed" checked>Mixed</label><br>
+            <label><input type="radio" name="caseOption" id="uppercase" >Uppercase only</label><br>
+            <label><input type="radio" name="caseOption" id="lowercase" >lowercase only</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="includeNumbers">Include Numbers</label><br>
+            <label><input type="checkbox" id="includeNonLetters">Include NonLetters</label>
+        </div>
+        <button >Generate Password</button>
+        <div>
+            <h2>Generated Password:</h2>
+            <p id="passwordOutput"></p>
+        </div>
+    </div>
+
+<script>
+    const characters = {
+        lower: 'abcdefghijklmnopqrstuvwxyz',
+        upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        number: '0123456789',
+        symbol: '!@#$%^&*()-_=+<>?/{}[]|"'
+    };
+
+    // function
+    const generatePassword = (e) => {
+        let length = document.getElementById('length').value;
+        let mixed = document.getElementById('mixed').checked;
+        let uppercase =document.getElementById('uppercase').checked;
+        let lowercase =document.getElementById('lowercase').checked;
+        let includeNumbers = document.getElementById('includeNumbers').checked;
+        let includeNonLetters = document.getElementById('includeNonLetters').checked;
+    
+    // Build a list of characters to select from to build password
+    let passwordCharacters = '';
+    if (mixed) passwordCharacters += characters.upper + characters.lower;
+    if (uppercase) passwordCharacters += characters.upper;
+    if (lowercase) passwordCharacters += characters.lower;
+    if (includeNumbers) passwordCharacters += characters.number;
+    if (includeNonLetters) passwordCharacters += characters.symbol;
+
+    //console.log(passwordCharacters);
+
+    // Randomly select from the characters in the string passwordCharacters to create a password
+    let password = '';
+    for (let i=0; i < length; i++) {
+        password += passwordCharacters [Math.floor(Math.random() *
+        passwordCharacters.length)];
+    }
+
+    document.getElementById('passwordOutput').innerText = password;
+
+    //console.log(password);
+    }
+    // When button is clicked, display generated password
+    document.getElementsByTagName('button')[0].addEventListener("click", generatePassword);
+    
+</script>
+
+</body>
+</html>
