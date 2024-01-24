@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - Notes</title>
+    <style>
+        body{
+            font-family: arial, sans-serif;
+        }
+        #header{
+            text-align: center;
+        }
+        #note{
+            width: 100%;
+            height: 100px;
+        }
+        #btnSave{
+            width: 100%;
+            background-color: orange;
+            height: 40px;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+        
+
+        p{
+            border: 1px solid black;
+            text-align: left;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id = "header">
+        <h1>Notes App</h1>
+        <div id = "notes"></div> 
+        <div id="noteEnter">
+            <textarea id="note"></textarea>
+            <button id = "btnSave">Save Note</button>
+        </div>
+    </div>
+    <script>
+
+        var btnSave = document.getElementById("btnSave");
+        var out = "";
+
+        btnSave.onclick = function(){
+            // original code
+            //let text = "<div class = 'note'>";
+            //text += document.getElementById("note").value;
+            //text += "</div>";
+            //document.getElementById("notes").innerHTML += text; 
+            //document.getElementById("note").value ="";
+        
+            // Replaced with a more secure alternative.  innerHTML can be used to 
+            // inject malicious code into HTML
+            // Added css styling for p.  Removed ccs styling for note
+
+            var outputElement = document.getElementById('notes');
+            var newParagraph = document.createElement('p');
+            newParagraph.textContent = document.getElementById("note").value;
+            outputElement.appendChild(newParagraph);
+            
+            document.getElementById("note").value = '';
+        }
+    </script>
+</body>
+</html>
