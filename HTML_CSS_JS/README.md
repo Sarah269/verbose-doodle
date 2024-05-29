@@ -1,1 +1,1 @@
-# The projects in this folder use HTML, CSS, and Javascript
+# The projects in this folder are HTML, CSS, and Javascript practice projects.
