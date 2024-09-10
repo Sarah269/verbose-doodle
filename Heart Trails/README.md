@@ -1,4 +1,4 @@
-# This project animates the movements of floating hearts in multiple colors.
+# Heart Trails
 
 ### Reference: HTML CSS JS projects (Beginner): 30 projects using HTML, CSS, and Javascript.  Javascript King.
 
