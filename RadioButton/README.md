@@ -1,5 +1,5 @@
-# HTML and CSS stuff
+# CSS Radio Buttons
 
-<b>P1_Radiobtn:  </b> Select your favorite things using custom radio buttons
+### Reference: 32 HTML and CSS projects for beginners. mikeegoes.com
 
-<img src="P1_Radiobtn.png" height=200 alt="Radio Button">
+<img src="P1_Radiobtn.png" height=200 alt="Radio Button" height="400" />
